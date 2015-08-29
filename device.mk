@@ -55,6 +55,17 @@ PRODUCT_PACKAGES += \
     camera.msm8916 \
     libmm-qcamera
 
+# Charger
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.usb.id.charge=3009 \
+    ro.usb.id.mtp=3003 \
+    ro.usb.id.mtp_adb=3004 \
+    ro.usb.id.ptp=3005 \
+    ro.usb.id.ptp_adb=3006 \
+    ro.usb.id.ums=3007 \
+    ro.usb.id.ums_adb=3008 \
+    ro.usb.vid=2a96
+
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8916
@@ -83,18 +94,22 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     calmodule.cfg \
     libcalmodule_akm.so \
-    libcalmodule_common
+    libcalmodule_common \
+    sensors.msm8916
 
 # Ramdisk
 PRODUCT_PACKAGES += \
+    fstab.qcom \
     init.lettuce.diag.rc \
-    init.target.rc \
-    init.qcom.usb.rc \
-    ueventd.qcom.rc
+    init.target.rc
 
 # Recovery
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     $(LOCAL_PATH)/lettuce-releasekey
+
+# Thermals
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/thermal_engine.conf:system/etc/thermal-engine.conf
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
